@@ -13,11 +13,18 @@
     <div id="root"></div>
     <script type="text/babel">
         const CheckInGuide = () => {
+            const [property, setProperty] = React.useState('');
+
+            React.useEffect(() => {
+                const params = new URLSearchParams(window.location.search);
+                setProperty(params.get('property') || 'Green Surabaya Homey');
+            }, []);
+
             return (
                 <div className="max-w-2xl mx-auto p-6 bg-white min-h-screen">
                     <header className="text-center mb-8">
                         <h1 className="text-4xl font-bold mb-2 text-blue-800">Panduan Check-In</h1>
-                        <h2 className="text-2xl mb-2">Green Surabaya Homey</h2>
+                        <h2 className="text-2xl mb-2">{property}</h2>
                         <p className="text-gray-600 text-xl">Selamat Datang! 🏡</p>
                     </header>
 
@@ -70,7 +77,8 @@
                     {/* Contact */}
                     <section className="bg-blue-50 p-4 rounded-lg">
                         <h2 className="font-bold mb-2 text-blue-800">📞 Butuh bantuan?</h2>
-                        <p>Hubungi kami melalui WhatsApp di nomor yang tertera pada bukti pemesanan.</p>
+                        <p>Hubungi kami melalui WhatsApp:</p>
+                        <p className="font-semibold mt-2">+6281357009680</p>
                         <p className="mt-4 text-center font-semibold">Selamat beristirahat! 😊</p>
                     </section>
                 </div>
