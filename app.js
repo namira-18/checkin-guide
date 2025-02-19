@@ -1,12 +1,22 @@
 const CheckInGuide = () => {
-    // Sample data - replace with your actual data source
-    const bookingData = {
-        property: "Green Surabaya Homey",
-        invoice: "INV-001",
-        guestName: "John Doe",
-        checkIn: "2024-02-20",
-        checkOut: "2024-02-22",
-        roomNumber: "101"
+    const [bookingData, setBookingData] = useState({});
+    
+    useEffect(() => {
+        // Get URL parameters
+        const params = new URLSearchParams(window.location.search);
+        setBookingData({
+            property: params.get('property') || 'Green Surabaya Homey',
+            guestName: params.get('guest') || '',
+            checkIn: params.get('checkin') || '',
+            checkOut: params.get('checkout') || '',
+            invoice: params.get('invoice') || '',
+            roomType: params.get('roomType') || '',
+            roomNumber: params.get('roomNumber') || ''
+        });
+    }, []);
+
+    // Rest of your component code...
+};
     };
 
     return (
