@@ -5,15 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Check-in Guide</title>
     <!-- React -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Tailwind CSS -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100">
     <div id="root"></div>
-    <script type="text/babel" src="app.js"></script>
+    <script type="text/babel">
+        // Add the React component code directly here
+        const CheckInGuide = () => {
+            const bookingData = {
+                property: "Green Surabaya Homey",
+                invoice: "INV-001",
+                guestName: "John Doe",
+                checkIn: "2024-02-20",
+                checkOut: "2024-02-22",
+                roomNumber: "101"
+            };
+
+            return (
+                <div className="max-w-2xl mx-auto p-6 bg-white min-h-screen">
+                    <header className="text-center mb-8">
+                        <h1 className="text-4xl font-bold mb-2 text-blue-800">Panduan Check-In</h1>
+                        <h2 className="text-2xl mb-2">{bookingData.property}</h2>
+                        <p className="text-gray-600 text-xl">Selamat Datang! 🏡</p>
+                    </header>
+
+                    {/* ... rest of your component code ... */}
+                </div>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<CheckInGuide />);
+    </script>
 </body>
 </html>
