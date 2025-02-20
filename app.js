@@ -79,7 +79,7 @@ const CheckInGuide = () => {
                         </li>
                         <li className="flex items-center">
                             <span className="mr-3 text-green-500">🍳</span>
-                            <strong>Dapur Bersama</strong>: Buka pukul <strong>07.00 - 21.00</strong>
+                            <strong>Dapur Bersama</strong>: Buka pukul <strong> 07.00 - 21.00</strong>
                         </li>
                         <li className="flex items-center">
                             <span className="mr-3 text-green-500">🛋️</span>
@@ -106,7 +106,7 @@ const CheckInGuide = () => {
                     <ul className="space-y-3">
                         <li className="flex items-center">
                             <span className="mr-3 text-red-500">🚭</span>
-                            <strong>Dilarang merokok</strong> di dalam kamar
+                            <strong>Dilarang merokok </strong> di dalam kamar
                         </li>
                         <li className="flex items-center">
                             <span className="mr-3 text-blue-500">🤫</span>
@@ -122,7 +122,7 @@ const CheckInGuide = () => {
                         </li>
                         <li className="flex items-center">
                             <span className="mr-3 text-blue-500">⏰</span>
-                            <strong>Check-out tepat waktu</strong> agar tidak dikenakan biaya tambahan
+                            <strong>Check-out tepat waktu </strong> agar tidak dikenakan biaya tambahan
                         </li>
                     </ul>
                 </div>
