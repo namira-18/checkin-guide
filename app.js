@@ -24,13 +24,13 @@ const CheckInGuide = () => {
             <div className="max-w-xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden">
                 {/* Header */}
                 <div className="bg-blue-600 text-white text-center py-4 px-4 sm:py-6">
-                    <h1 className="text-2xl sm:text-3xl font-bold mb-2">Panduan Check-In</h1>
-                    <h2 className="text-lg sm:text-xl font-semibold">{property}</h2>
                     {guestName && (
-                        <p className="text-base sm:text-lg mt-2">
+                        <p className="text-base sm:text-lg mb-2">
                             Hai <span className="font-bold text-yellow-200">{guestName}</span>, Selamat Datang! 🏡
                         </p>
                     )}
+                    <h1 className="text-2xl sm:text-3xl font-bold mb-2">Panduan Check-In</h1>
+                    <h2 className="text-lg sm:text-xl font-semibold">{property}</h2>
                 </div>
 
                 {/* Booking Details */}
@@ -133,7 +133,7 @@ const CheckInGuide = () => {
                     <p className="mb-4 text-sm sm:text-base">Hubungi kami melalui WhatsApp:</p>
                     <a 
                         href="https://wa.me/6281357009680" 
-                        className="text-base sm:text-lg font-semibold text-green-600 hover:text-green-700"
+                        className="text-sm font-semibold text-green-600 hover:text-green-700"
                     >
                         +62 813-5700-9680
                     </a>
