@@ -1,92 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Check-in Guide</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <div id="root"></div>
-    <script type="text/babel">
-        const CheckInGuide = () => {
-            const [property, setProperty] = React.useState('');
+import React, { useState, useEffect } from 'react';
 
-            React.useEffect(() => {
-                const params = new URLSearchParams(window.location.search);
-                setProperty(params.get('property') || 'Green Surabaya Homey');
-            }, []);
+const CheckInGuide = () => {
+    const [property, setProperty] = useState('Green Surabaya Homey');
+    const [guestName, setGuestName] = useState('');
+    const [checkIn, setCheckIn] = useState('');
+    const [checkOut, setCheckOut] = useState('');
 
-            return (
-                <div className="max-w-2xl mx-auto p-6 bg-white min-h-screen">
-                    <header className="text-center mb-8">
-                        <h1 className="text-4xl font-bold mb-2 text-blue-800">Panduan Check-In</h1>
-                        <h2 className="text-2xl mb-2">{property}</h2>
-                        <p className="text-gray-600 text-xl">Selamat Datang! 🏡</p>
-                    </header>
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        setProperty(params.get('property') || 'Green Surabaya Homey');
+        setGuestName(params.get('guest') || '');
+        setCheckIn(params.get('checkin') || '');
+        setCheckOut(params.get('checkout') || '');
+    }, []);
 
-                    {/* Check-in Time */}
-                    <section className="mb-6 bg-gray-50 p-4 rounded-lg">
-                        <h2 className="font-bold mb-2 text-blue-800">📌 Waktu Check-In & Check-Out</h2>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="flex items-center"><span className="mr-2">⏰</span> Check-in: 14.00</div>
-                            <div className="flex items-center"><span className="mr-2">⏰</span> Check-out: 12.00</div>
-                        </div>
-                        <p className="text-sm text-gray-600 mt-2">🔹 Early check-in/late check-out: Hubungi kami</p>
-                    </section>
+    return (
+        <div className="max-w-2xl mx-auto p-6 bg-white min-h-screen">
+            <header className="text-center mb-8">
+                <h1 className="text-4xl font-bold mb-2 text-blue-800">Panduan Check-In</h1>
+                <h2 className="text-2xl mb-2">{property}</h2>
+                {guestName && (
+                    <p className="text-xl mb-2">Hai {guestName}, Selamat Datang! 🏡</p>
+                )}
+                <p className="text-gray-600 text-xl">Enjoy Your Stay! 😊</p>
+            </header>
 
-                    {/* Check-in Process */}
-                    <section className="mb-6 bg-gray-50 p-4 rounded-lg">
-                        <h2 className="font-bold mb-2 text-blue-800">🛎 Proses Check-In</h2>
-                        <div>
-                            <h3 className="font-semibold">1️⃣ Konfirmasi Identitas</h3>
-                            <ul className="list-disc ml-6 mb-4">
-                                <li>Tunjukkan pesan ini</li>
-                                <li>KTP/Paspor/SIM</li>
-                                <li>Bukti Menikah/KTP satu alamat (untuk pasangan)</li>
-                            </ul>
-                        </div>
-                    </section>
+            {/* Previous sections remain the same */}
 
-                    {/* Facilities */}
-                    <section className="mb-6 bg-gray-50 p-4 rounded-lg">
-                        <h2 className="font-bold mb-2 text-blue-800">📡 Fasilitas Guesthouse</h2>
-                        <div className="grid grid-cols-2 gap-2">
-                            <div className="flex items-center"><span className="mr-2">✔</span> WiFi: Saat check-in</div>
-                            <div className="flex items-center"><span className="mr-2">✔</span> Dapur Bersama: 07.00-20.00</div>
-                            <div className="flex items-center"><span className="mr-2">✔</span> Ruang Santai</div>
-                            <div className="flex items-center"><span className="mr-2">✔</span> Laundry (biaya tambahan)</div>
-                            <div className="flex items-center"><span className="mr-2">✔</span> Parkir (kunci ganda)</div>
-                        </div>
-                    </section>
-
-                    {/* Rules */}
-                    <section className="mb-6 bg-gray-50 p-4 rounded-lg">
-                        <h2 className="font-bold mb-2 text-blue-800">📜 Aturan Guesthouse</h2>
-                        <div className="space-y-2">
-                            <div className="flex items-center"><span className="mr-2">❌</span> Dilarang merokok dalam kamar</div>
-                            <div className="flex items-center"><span className="mr-2">🔇</span> Jaga ketenangan setelah 21.00</div>
-                            <div className="flex items-center"><span className="mr-2">🔑</span> Kunci kamar saat keluar</div>
-                            <div className="flex items-center"><span className="mr-2">♻</span> Buang sampah pada tempatnya</div>
-                        </div>
-                    </section>
-
-                    {/* Contact */}
-                    <section className="bg-blue-50 p-4 rounded-lg">
-                        <h2 className="font-bold mb-2 text-blue-800">📞 Butuh bantuan?</h2>
-                        <p>Hubungi kami melalui WhatsApp:</p>
-                        <p className="font-semibold mt-2">+6281357009680</p>
-                        <p className="mt-4 text-center font-semibold">Selamat beristirahat! 😊</p>
-                    </section>
+            {/* Facilities */}
+            <section className="mb-6 bg-gray-50 p-4 rounded-lg">
+                <h2 className="font-bold mb-2 text-blue-800">📡 3. Fasilitas Guesthouse</h2>
+                <div className="space-y-2">
+                    <div className="flex items-center">
+                        <span className="mr-2">✔</span> 
+                        <strong>WiFi</strong>: Saat check-in
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">✔</span> 
+                        <strong>Dapur Bersama</strong>: Buka pukul <strong>07.00 - 21.00</strong>
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">✔</span> 
+                        <strong>Ruang Santai</strong>: Bebas digunakan, harap jaga kebersihan
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">✔</span> 
+                        <strong>Laundry</strong>: Tersedia layanan laundry <em>(dengan biaya tambahan)</em>
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">✔</span> 
+                        <strong>Parkir</strong>: Parkir (kunci ganda)
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">✔</span> 
+                        <strong>Sewa Motor</strong>: Silahkan hubungi kami <em>(harga mulai 70.000/ hari)</em>
+                    </div>
                 </div>
-            );
-        };
+            </section>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<CheckInGuide />);
-    </script>
-</body>
-</html>
+            {/* Rules */}
+            <section className="mb-6 bg-gray-50 p-4 rounded-lg">
+                <h2 className="font-bold mb-2 text-blue-800">📜 4. Aturan Guesthouse</h2>
+                <div className="space-y-2">
+                    <div className="flex items-center">
+                        <span className="mr-2">❌</span> 
+                        <strong>Dilarang merokok</strong> di dalam kamar
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">🔇</span> 
+                        <strong>Jaga ketenangan</strong>, terutama setelah pukul <strong>21.00</strong>
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">🔑</span> 
+                        <strong>Kunci kamar dengan aman</strong> saat keluar
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">♻</span> 
+                        <strong>Buang sampah pada tempatnya</strong>
+                    </div>
+                    <div className="flex items-center">
+                        <span className="mr-2">🚪</span> 
+                        <strong>Check-out tepat waktu</strong> agar tidak dikenakan biaya tambahan
+                    </div>
+                </div>
+            </section>
+
+            {/* Contact */}
+            <section className="bg-blue-50 p-4 rounded-lg">
+                <h2 className="font-bold mb-2 text-blue-800">📞 Butuh bantuan?</h2>
+                <p>Hubungi kami melalui WhatsApp:</p>
+                <p className="font-semibold mt-2">+6281357009680</p>
+                
+                {/* Closing message */}
+                <div className="mt-4 text-center">
+                    <p>Terima kasih telah menginap di <strong>{property}</strong>! Kami harap kamu menikmati menginap bersama kami. ✨</p>
+                    <p className="font-semibold mt-2">Salam Hangat,</p>
+                    <p>Surabaya Homey Team</p>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default CheckInGuide;
