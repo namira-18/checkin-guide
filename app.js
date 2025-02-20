@@ -27,7 +27,9 @@ const CheckInGuide = () => {
                     <h1 className="text-2xl sm:text-3xl font-bold mb-2">Panduan Check-In</h1>
                     <h2 className="text-lg sm:text-xl font-semibold">{property}</h2>
                     {guestName && (
-                        <p className="text-base sm:text-lg mt-2">Hai {guestName}, Selamat Datang! 🏡</p>
+                        <p className="text-base sm:text-lg mt-2">
+                            Hai <span className="font-bold text-yellow-200">{guestName}</span>, Selamat Datang! 🏡
+                        </p>
                     )}
                 </div>
 
@@ -129,7 +131,12 @@ const CheckInGuide = () => {
                 <div className="p-4 sm:p-6 bg-blue-50 text-center">
                     <h3 className="text-lg sm:text-xl font-semibold text-blue-800 mb-4">📞 Butuh Bantuan?</h3>
                     <p className="mb-4 text-sm sm:text-base">Hubungi kami melalui WhatsApp:</p>
-                    <p className="text-xl sm:text-2xl font-bold text-green-600">+6281357009680</p>
+                    <a 
+                        href="https://wa.me/6281357009680" 
+                        className="text-base sm:text-lg font-semibold text-green-600 hover:text-green-700"
+                    >
+                        +62 813-5700-9680
+                    </a>
 
                     {/* Closing Message */}
                     <div className="mt-4 sm:mt-6 border-t pt-4">
